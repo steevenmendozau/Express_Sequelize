@@ -15,6 +15,7 @@
                         <th>Descripción</th>
                         <th>URL</th>
                         <th>Acción</th>
+                        <th>Etiquetas</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -42,11 +43,21 @@
                                         <i class="material-icons">&#xE5C9;</i>
                                     </a>
                                 </td>
+                                <td>
+                                    <% if (foto.etiqueta && foto.etiqueta.length> 0) { %>
+                                        <% foto.etiqueta.forEach((etiqueta, idx)=> { %>
+                                            <%= etiqueta.texto %>
+                                                <% if (idx < foto.etiqueta.length - 1) { %>, <% } %>
+                                                        <% }); %>
+                                                            <% } else { %>
+                                                                No etiquetas
+                                                                <% } %>
+                                </td>
                             </tr>
                             <% }); %>
                                 <% } else { %>
                                     <tr>
-                                        <td colspan="4" class="text-center">No hay fotos disponibles</td>
+                                        <td colspan="5" class="text-center">No hay fotos disponibles</td>
                                     </tr>
                                     <% } %>
                 </tbody>
@@ -67,7 +78,8 @@
         </div>
         <div class="col-sm-7">
             <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE147;</i> <span>Add New Photo</span></a>
-            <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i> <span>Export to Excel</span></a>
+            <a href="#" class="btn btn-secondary"><i class="material-icons">&#xE24D;</i> <span>Export to
+                    Excel</span></a>
         </div>
     </div>
 </main>
