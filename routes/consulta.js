@@ -8,9 +8,10 @@ const Etiqueta = require('../models').etiqueta;
 router.get('/findid/json', function(req, res, next){
     const id = req.query.id;
     if (!id) return res.status(400).json({ error: 'ID requerido' });
+    
     Foto.findOne({
         where: { id: id },
-        attributes: { exclude: ['updatedAt'] },
+        attributes: { exclude: ['updatedAt', 'createdAt'] },
         include: [{
             model: Etiqueta,
             attributes: ['texto'],
@@ -29,7 +30,7 @@ router.get('/findid/view', function(req, res, next){
     if (!id) return res.render('consulta', { title: 'Consulta', consulta: null, error: 'ID requerido' });
     Foto.findOne({
         where: { id: id },
-        attributes: { exclude: ['updatedAt'] },
+        attributes: { exclude: ['updatedAt', 'createdAt'] },
         include: [{
             model: Etiqueta,
             attributes: ['texto'],

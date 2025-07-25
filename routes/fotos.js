@@ -9,7 +9,7 @@ const Etiqueta = require('../models').etiqueta;
 router.get('/findAll/json', function(req, res, next){
 
     Foto.findAll({
-        attributes: {exclude: ['updatedAt']},
+        attributes: {exclude: ['updatedAt', 'createdAt']},
 
         include: [{
             model: Etiqueta,
@@ -26,7 +26,7 @@ router.get('/findAll/json', function(req, res, next){
 router.get('/findAll/view', function(req, res, next){
 
     Foto.findAll({
-        attributes: {exclude: ['updatedAt']},
+        attributes: {exclude: ['updatedAt', 'createdAt']},
 
         include: [{
             model: Etiqueta,
